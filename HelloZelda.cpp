@@ -26,6 +26,9 @@ bool init();
 // Loads media like images and audio
 bool loadMedia();
 
+// Creates a rectangle and renders to screen
+bool CreateRect();
+
 // Frees media and closes SDL
 void close();
 
@@ -84,15 +87,23 @@ int main(int argc, char *args[]) {
           gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT];
           break;
 
+        case SDLK_v:
+          gTexture = NULL;
+          CreateRect();
+          printf("Create rect");
+          break;
+
         default:
           gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
           break;
         }
-        SDL_Rect stretchRect;
-        stretchRect.x = 0;
-        stretchRect.y = 0;
-        stretchRect.w = WINDOW_WIDTH;
-        stretchRect.h = WINDOW_HEIGHT;
+        if (gTexture != NULL) {
+          SDL_Rect stretchRect;
+          stretchRect.x = 0;
+          stretchRect.y = 0;
+          stretchRect.w = WINDOW_WIDTH;
+          stretchRect.h = WINDOW_HEIGHT;
+        }
 
         SDL_RenderClear(gRenderer);
         SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
@@ -199,6 +210,15 @@ bool loadMedia() {
     success = false;
   }
 
+  return success;
+}
+
+bool CreateRect() {
+  bool success = true;
+  SDL_Rect fillRect = {WINDOW_WIDTH / 4, WINDOW_HEIGHT / 4, WINDOW_HEIGHT / 2,
+                       WINDOW_WIDTH / 2};
+  SDL_SetRenderDrawColor(gRenderer, 10, 10, 10, 0xFF);
+  SDL_RenderFillRect(gRenderer, &fillRect);
   return success;
 }
 
