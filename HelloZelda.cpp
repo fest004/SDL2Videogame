@@ -32,6 +32,8 @@ bool CreateRect();
 // Frees media and closes SDL
 void close();
 
+void checkInput(SDL_Event e);
+
 // Loads individual image as texture
 SDL_Texture *loadTexture(std::string path);
 
@@ -61,42 +63,15 @@ int main(int argc, char *args[]) {
     close();
   }
   bool quit = false;
-  SDL_Event e;
+  SDL_Event event;
 
   while (!quit) {
     gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
-    while (SDL_PollEvent(&e) != 0) {
-      if (e.type == SDL_QUIT) {
+    while (SDL_PollEvent(&event) != 0) {
+      if (event.type == SDL_QUIT) {
         quit = true;
-      } else if (e.type == SDL_KEYDOWN) {
-
-        switch (e.key.keysym.sym) {
-        case SDLK_UP:
-          gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_UP];
-          break;
-
-        case SDLK_DOWN:
-          gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN];
-          break;
-
-        case SDLK_LEFT:
-          gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT];
-          break;
-
-        case SDLK_RIGHT:
-          gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT];
-          break;
-
-        case SDLK_v:
-          gTexture = NULL;
-          CreateRect();
-          printf("Create rect");
-          break;
-
-        default:
-          gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
-          break;
-        }
+      } else if (event.type == SDL_KEYDOWN) {
+        checkInput(event);
         if (gTexture != NULL) {
           SDL_Rect stretchRect;
           stretchRect.x = 0;
@@ -220,6 +195,36 @@ bool CreateRect() {
   SDL_SetRenderDrawColor(gRenderer, 10, 10, 10, 0xFF);
   SDL_RenderFillRect(gRenderer, &fillRect);
   return success;
+}
+
+void checkInput(SDL_Event e) {
+  switch (e.key.keysym.sym) {
+  case SDLK_UP:
+    gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_UP];
+    break;
+
+  case SDLK_DOWN:
+    gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN];
+    break;
+
+  case SDLK_LEFT:
+    gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT];
+    break;
+
+  case SDLK_RIGHT:
+    gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT];
+    break;
+
+  case SDLK_v:
+    gTexture = NULL;
+    CreateRect();
+    printf("Create rect");
+    break;
+
+  default:
+    gTexture = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
+    break;
+  }
 }
 
 void close() {
