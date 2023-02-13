@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = HelloZelda.cpp
+OBJS = ZeldaEng.cpp ZeldaEng.hpp main.cpp
 
 #CC specifies which compiler we're using
 CC = g++
@@ -12,7 +12,7 @@ COMPILER_FLAGS = -w
 LINKER_FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
 
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = HelloZelda 
+OBJ_NAME = ZeldaEngine
 
 #This is the target that compiles our executable
 all : $(OBJS)
