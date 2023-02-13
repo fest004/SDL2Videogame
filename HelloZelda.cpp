@@ -1,4 +1,3 @@
-// Test user
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_error.h>
 #include <SDL2/SDL_events.h>
@@ -79,11 +78,10 @@ int main(int argc, char *args[]) {
           stretchRect.y = 0;
           stretchRect.w = WINDOW_WIDTH;
           stretchRect.h = WINDOW_HEIGHT;
+          SDL_RenderClear(gRenderer);
+          SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+          SDL_RenderPresent(gRenderer);
         }
-
-        SDL_RenderClear(gRenderer);
-        SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
-        SDL_RenderPresent(gRenderer);
       }
     }
   }
@@ -100,7 +98,6 @@ SDL_Texture *loadTexture(std::string path) {
     printf("Unable to load image %s! SDL Error: %s\n", path.c_str(),
            SDL_GetError());
   } else {
-
     newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
     if (newTexture == NULL) {
       printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(),
@@ -191,10 +188,24 @@ bool loadMedia() {
 
 bool CreateRect() {
   bool success = true;
+  SDL_RenderClear(gRenderer);
   SDL_Rect fillRect = {WINDOW_WIDTH / 4, WINDOW_HEIGHT / 4, WINDOW_HEIGHT / 2,
                        WINDOW_WIDTH / 2};
   SDL_SetRenderDrawColor(gRenderer, 10, 10, 10, 0xFF);
   SDL_RenderFillRect(gRenderer, &fillRect);
+  return success;
+}
+
+bool CreateDottedLine() {
+  bool success = true;
+  SDL_RenderClear(gRenderer);
+  SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0x000, 0xFF);
+  for (int i = 0; i < WINDOW_HEIGHT; i += 4) {
+    SDL_RenderDrawPoint(gRenderer, WINDOW_WIDTH / 2, i);
+  }
+
+  SDL_RenderPresent(gRenderer);
+
   return success;
 }
 
@@ -220,6 +231,12 @@ void checkInput(SDL_Event e) {
     gTexture = NULL;
     CreateRect();
     printf("Create rect");
+    break;
+
+  case SDLK_b:
+    gTexture = NULL;
+    CreateDottedLine();
+    printf("Create dottedline");
     break;
 
   default:
