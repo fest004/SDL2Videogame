@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ZELDA
-
-# Build rule for target.
-ZELDA: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ZELDA
-.PHONY : ZELDA
-
-# fast build rule for target.
-ZELDA/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/build
-.PHONY : ZELDA/fast
-
-#=============================================================================
 # Target rules for targets named Logger
 
 # Build rule for target.
@@ -139,15 +126,28 @@ Logger: cmake_check_build_system
 
 # fast build rule for target.
 Logger/fast:
-	$(MAKE) $(MAKESILENT) -f Logger/CMakeFiles/Logger.dir/build.make Logger/CMakeFiles/Logger.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/build
 .PHONY : Logger/fast
+
+#=============================================================================
+# Target rules for targets named ZeldaGame
+
+# Build rule for target.
+ZeldaGame: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ZeldaGame
+.PHONY : ZeldaGame
+
+# fast build rule for target.
+ZeldaGame/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZeldaGame.dir/build.make CMakeFiles/ZeldaGame.dir/build
+.PHONY : ZeldaGame/fast
 
 Logger/Log.o: Logger/Log.cpp.o
 .PHONY : Logger/Log.o
 
 # target to build an object file
 Logger/Log.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/Logger/Log.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/Logger/Log.cpp.o
 .PHONY : Logger/Log.cpp.o
 
 Logger/Log.i: Logger/Log.cpp.i
@@ -155,7 +155,7 @@ Logger/Log.i: Logger/Log.cpp.i
 
 # target to preprocess a source file
 Logger/Log.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/Logger/Log.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/Logger/Log.cpp.i
 .PHONY : Logger/Log.cpp.i
 
 Logger/Log.s: Logger/Log.cpp.s
@@ -163,7 +163,7 @@ Logger/Log.s: Logger/Log.cpp.s
 
 # target to generate assembly for a file
 Logger/Log.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/Logger/Log.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/Logger/Log.cpp.s
 .PHONY : Logger/Log.cpp.s
 
 ZeldaEng.o: ZeldaEng.cpp.o
@@ -171,7 +171,7 @@ ZeldaEng.o: ZeldaEng.cpp.o
 
 # target to build an object file
 ZeldaEng.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/ZeldaEng.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZeldaGame.dir/build.make CMakeFiles/ZeldaGame.dir/ZeldaEng.cpp.o
 .PHONY : ZeldaEng.cpp.o
 
 ZeldaEng.i: ZeldaEng.cpp.i
@@ -179,7 +179,7 @@ ZeldaEng.i: ZeldaEng.cpp.i
 
 # target to preprocess a source file
 ZeldaEng.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/ZeldaEng.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZeldaGame.dir/build.make CMakeFiles/ZeldaGame.dir/ZeldaEng.cpp.i
 .PHONY : ZeldaEng.cpp.i
 
 ZeldaEng.s: ZeldaEng.cpp.s
@@ -187,7 +187,7 @@ ZeldaEng.s: ZeldaEng.cpp.s
 
 # target to generate assembly for a file
 ZeldaEng.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/ZeldaEng.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZeldaGame.dir/build.make CMakeFiles/ZeldaGame.dir/ZeldaEng.cpp.s
 .PHONY : ZeldaEng.cpp.s
 
 main.o: main.cpp.o
@@ -195,7 +195,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZeldaGame.dir/build.make CMakeFiles/ZeldaGame.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -203,7 +203,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZeldaGame.dir/build.make CMakeFiles/ZeldaGame.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -211,7 +211,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZELDA.dir/build.make CMakeFiles/ZELDA.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZeldaGame.dir/build.make CMakeFiles/ZeldaGame.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -223,7 +223,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Logger"
-	@echo "... ZELDA"
+	@echo "... ZeldaGame"
 	@echo "... Logger/Log.o"
 	@echo "... Logger/Log.i"
 	@echo "... Logger/Log.s"

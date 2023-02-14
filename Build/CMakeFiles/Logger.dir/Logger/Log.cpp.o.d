@@ -1,7 +1,6 @@
-CMakeFiles/ZELDA.dir/ZeldaEng.cpp.o: \
- /home/kaliuser/Documents/CPP/ZeldaRemake/ZeldaEng.cpp \
+CMakeFiles/Logger.dir/Logger/Log.cpp.o: \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/Logger/Log.cpp \
  /usr/include/stdc-predef.h \
- /home/kaliuser/Documents/CPP/ZeldaRemake/ZeldaEng.h \
  /home/kaliuser/Documents/CPP/ZeldaRemake/Logger/Log.h \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
@@ -382,16 +381,4 @@ CMakeFiles/ZELDA.dir/ZeldaEng.cpp.o: \
  /usr/include/assert.h /usr/include/spdlog/details/backtracer-inl.h \
  /usr/include/spdlog/logger-inl.h /usr/include/spdlog/spdlog.h \
  /usr/include/spdlog/version.h /usr/include/spdlog/spdlog-inl.h \
- /home/kaliuser/Documents/CPP/ZeldaRemake/Logger/logger.h \
- /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_render.h \
- /usr/include/SDL2/SDL_video.h /usr/include/c++/12/iostream \
- /usr/include/c++/12/ostream /usr/include/c++/12/ios \
- /usr/include/c++/12/bits/basic_ios.h \
- /usr/include/c++/12/bits/locale_facets.h /usr/include/c++/12/cwctype \
- /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
- /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h \
- /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h \
- /usr/include/c++/12/bits/locale_facets.tcc \
- /usr/include/c++/12/bits/basic_ios.tcc \
- /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
- /usr/include/c++/12/bits/istream.tcc
+ /home/kaliuser/Documents/CPP/ZeldaRemake/Logger/logger.h

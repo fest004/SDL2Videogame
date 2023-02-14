@@ -1,5 +1,5 @@
-CMakeFiles/ZELDA.dir/ZeldaEng.cpp.o: \
- /home/kaliuser/Documents/CPP/ZeldaRemake/ZeldaEng.cpp \
+CMakeFiles/ZeldaGame.dir/main.cpp.o: \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/main.cpp \
  /usr/include/stdc-predef.h \
  /home/kaliuser/Documents/CPP/ZeldaRemake/ZeldaEng.h \
  /home/kaliuser/Documents/CPP/ZeldaRemake/Logger/Log.h \
@@ -327,71 +327,11 @@ CMakeFiles/ZELDA.dir/ZeldaEng.cpp.o: \
  /usr/include/c++/12/bits/locale_classes.h \
  /usr/include/c++/12/bits/locale_classes.tcc \
  /usr/include/c++/12/bits/streambuf.tcc /usr/include/fmt/format.h \
- /usr/include/fmt/core.h /usr/include/spdlog/common-inl.h \
- /usr/include/c++/12/algorithm \
- /usr/include/c++/12/pstl/glue_algorithm_defs.h \
- /usr/include/spdlog/details/log_msg-inl.h \
- /usr/include/spdlog/details/os.h /usr/include/spdlog/details/os-inl.h \
- /usr/include/c++/12/thread /usr/include/c++/12/bits/std_thread.h \
- /usr/include/c++/12/bits/this_thread_sleep.h \
- /usr/include/x86_64-linux-gnu/sys/stat.h \
- /usr/include/x86_64-linux-gnu/bits/stat.h \
- /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
- /usr/include/x86_64-linux-gnu/bits/statx.h /usr/include/linux/stat.h \
- /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
- /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
- /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
- /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
- /usr/include/linux/stddef.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
- /usr/include/asm-generic/posix_types.h \
- /usr/include/x86_64-linux-gnu/bits/statx-generic.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h \
- /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h \
- /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
- /usr/include/linux/falloc.h /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
- /usr/include/x86_64-linux-gnu/bits/environments.h \
- /usr/include/x86_64-linux-gnu/bits/confname.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
- /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /usr/include/linux/close_range.h \
- /usr/include/x86_64-linux-gnu/sys/syscall.h \
- /usr/include/x86_64-linux-gnu/asm/unistd.h \
- /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
- /usr/include/x86_64-linux-gnu/bits/syscall.h \
- /usr/include/spdlog/formatter.h /usr/include/spdlog/sinks/sink-inl.h \
- /usr/include/spdlog/sinks/ansicolor_sink-inl.h \
- /usr/include/spdlog/pattern_formatter.h \
- /usr/include/spdlog/pattern_formatter-inl.h \
- /usr/include/spdlog/details/fmt_helper.h \
+ /usr/include/fmt/core.h /usr/include/spdlog/formatter.h \
  /usr/include/spdlog/details/synchronous_factory.h \
- /usr/include/spdlog/details/registry.h \
- /usr/include/spdlog/details/registry-inl.h \
- /usr/include/spdlog/details/periodic_worker.h \
- /usr/include/c++/12/condition_variable \
- /usr/include/spdlog/details/periodic_worker-inl.h \
- /usr/include/spdlog/logger.h /usr/include/spdlog/details/backtracer.h \
+ /usr/include/spdlog/details/registry.h /usr/include/spdlog/logger.h \
+ /usr/include/spdlog/details/backtracer.h \
  /usr/include/spdlog/details/log_msg_buffer.h \
- /usr/include/spdlog/details/log_msg_buffer-inl.h \
  /usr/include/spdlog/details/circular_q.h /usr/include/c++/12/cassert \
- /usr/include/assert.h /usr/include/spdlog/details/backtracer-inl.h \
- /usr/include/spdlog/logger-inl.h /usr/include/spdlog/spdlog.h \
- /usr/include/spdlog/version.h /usr/include/spdlog/spdlog-inl.h \
- /home/kaliuser/Documents/CPP/ZeldaRemake/Logger/logger.h \
- /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_render.h \
- /usr/include/SDL2/SDL_video.h /usr/include/c++/12/iostream \
- /usr/include/c++/12/ostream /usr/include/c++/12/ios \
- /usr/include/c++/12/bits/basic_ios.h \
- /usr/include/c++/12/bits/locale_facets.h /usr/include/c++/12/cwctype \
- /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
- /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h \
- /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h \
- /usr/include/c++/12/bits/locale_facets.tcc \
- /usr/include/c++/12/bits/basic_ios.tcc \
- /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
- /usr/include/c++/12/bits/istream.tcc
+ /usr/include/assert.h /usr/include/spdlog/spdlog.h \
+ /usr/include/spdlog/version.h /usr/include/SDL2/SDL_video.h

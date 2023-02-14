@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/ZELDA.dir/main.cpp.o CMakeFiles/ZELDA.dir/ZeldaEng.cpp.o CMakeFiles/ZELDA.dir/Logger/Log.cpp.o -o ZELDA  Logger/libLogger.a -lSDL2 
+/usr/bin/c++ CMakeFiles/ZELDA.dir/main.cpp.o CMakeFiles/ZELDA.dir/ZeldaEng.cpp.o CMakeFiles/ZELDA.dir/Logger/Log.cpp.o -o ZELDA  -lLogger -lSDL2 

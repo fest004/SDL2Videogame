@@ -124,7 +124,6 @@ ZELDA: CMakeFiles/ZELDA.dir/main.cpp.o
 ZELDA: CMakeFiles/ZELDA.dir/ZeldaEng.cpp.o
 ZELDA: CMakeFiles/ZELDA.dir/Logger/Log.cpp.o
 ZELDA: CMakeFiles/ZELDA.dir/build.make
-ZELDA: Logger/libLogger.a
 ZELDA: CMakeFiles/ZELDA.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kaliuser/Documents/CPP/ZeldaRemake/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ZELDA"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ZELDA.dir/link.txt --verbose=$(VERBOSE)

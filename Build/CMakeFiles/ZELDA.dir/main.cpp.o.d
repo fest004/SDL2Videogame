@@ -1,7 +1,7 @@
 CMakeFiles/ZELDA.dir/main.cpp.o: \
  /home/kaliuser/Documents/CPP/ZeldaRemake/main.cpp \
  /usr/include/stdc-predef.h \
- /home/kaliuser/Documents/CPP/ZeldaRemake/ZeldaEng.hpp \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/ZeldaEng.h \
  /home/kaliuser/Documents/CPP/ZeldaRemake/Logger/Log.h \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
