@@ -1,0 +1,8 @@
+/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles/Logger.dir
+/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles/ZeldaGame.dir
+/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles/edit_cache.dir
+/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles/rebuild_cache.dir
+/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles/list_install_components.dir
+/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles/install.dir
+/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles/install/local.dir
+/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles/install/strip.dir
