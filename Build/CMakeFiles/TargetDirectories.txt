@@ -1,4 +1,0 @@
-/home/kaliuser/Documents/CPP/ZeldaRemake/Build/CMakeFiles/Logger.dir
-/home/kaliuser/Documents/CPP/ZeldaRemake/Build/CMakeFiles/ZeldaGame.dir
-/home/kaliuser/Documents/CPP/ZeldaRemake/Build/CMakeFiles/edit_cache.dir
-/home/kaliuser/Documents/CPP/ZeldaRemake/Build/CMakeFiles/rebuild_cache.dir

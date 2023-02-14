@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/ZeldaGame.dir/main.cpp.o CMakeFiles/ZeldaGame.dir/ZeldaEng.cpp.o -o ZeldaGame  -Wl,-rpath,/home/kaliuser/Documents/CPP/ZeldaRemake/Build /usr/lib/x86_64-linux-gnu/libspdlog.so.1.10.0 /usr/lib/x86_64-linux-gnu/libSDL2.so libLogger.so /usr/lib/x86_64-linux-gnu/libfmt.so.9.1.0 
