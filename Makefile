@@ -1,8 +1,8 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = ZeldaEng.cpp ZeldaEng.hpp main.cpp
+OBJS = ZeldaEng.cpp ZeldaEng.hpp main.cpp Logger/Log.cpp
 
 #CC specifies which compiler we're using
-CC = g++
+CC = clang 
 
 #COMPILER_FLAGS specifies the additional compilation options we're using
 # -w suppresses all warnings

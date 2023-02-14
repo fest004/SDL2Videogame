@@ -2,6 +2,7 @@
 
 #ifndef Game_hpp
 #define Game_hpp
+#include "Logger/Log.h"
 #include <SDL2/SDL.h>
 #include <stdio.h>
 
@@ -25,6 +26,8 @@ private:
   bool isRunning;
   SDL_Window *window;
   SDL_Renderer *renderer;
+
+  Log LogManager;
 };
 
 #endif
