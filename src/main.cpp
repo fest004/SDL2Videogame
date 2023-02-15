@@ -17,15 +17,5 @@ int main(int argc, const char *argv[]) {
   }
 
   engine->Clean();
-
-  /*
-  What happens in a game loop:
-  While (game running) {
-    Get user input
-    Update objects
-    Render changes to display
-  }
-  */
-
   return 0;
 }

@@ -49,7 +49,9 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   }
 
   SDL_Surface *tmpSurface =
-      IMG_Load("/../assets/spritesheets/zeldaleftTest.png ");
+      IMG_Load("../assets/spritesheets/zeldaleftTest.png");
+  if (tmpSurface == NULL)
+    ZeldaError("Could not load IMG", SDL_GetError());
   playerTexture = SDL_CreateTextureFromSurface(renderer, tmpSurface);
   SDL_FreeSurface(tmpSurface);
 }
