@@ -1,12 +1,14 @@
 #include "../include/zeldaEng.h"
-#include "../include/logger/logger.h"
+#include "../include/logger.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_image.h>
 #include <SDL2/SDL_render.h>
+#include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_video.h>
 #include <iostream>
 
-// #define LOG(x) std::cout << x << std::endl;
+SDL_Texture *playerTexture;
 
 ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
@@ -45,6 +47,11 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   } else {
     isRunning = false;
   }
+
+  SDL_Surface *tmpSurface =
+      IMG_Load("/../assets/spritesheets/zeldaleftTest.png ");
+  playerTexture = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+  SDL_FreeSurface(tmpSurface);
 }
 
 void ZeldaEng::EventHandle() {
@@ -63,6 +70,9 @@ void ZeldaEng::Update() {}
 void ZeldaEng::Render() {
   SDL_RenderClear(renderer);
   // Add stuff to render
+
+  SDL_RenderCopy(renderer, playerTexture, NULL, NULL);
+
   SDL_RenderPresent(renderer);
 }
 

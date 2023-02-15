@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/kaliuser/Documents/CPP/ZeldaRemake/src/logger/log.cpp" "CMakeFiles/Logger.dir/src/logger/log.cpp.o" "gcc" "CMakeFiles/Logger.dir/src/logger/log.cpp.o.d"
+  "/home/kaliuser/Documents/CPP/ZeldaRemake/src/log.cpp" "CMakeFiles/Logger.dir/src/log.cpp.o" "gcc" "CMakeFiles/Logger.dir/src/log.cpp.o.d"
   )
 
 # Targets to which this target links.

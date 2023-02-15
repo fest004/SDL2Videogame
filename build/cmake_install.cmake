@@ -42,34 +42,6 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame"
-         RPATH "")
-  endif()
-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame")
-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-  file(INSTALL DESTINATION "/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables" TYPE EXECUTABLE FILES "/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame")
-  if(EXISTS "$ENV{DESTDIR}/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame"
-         OLD_RPATH "/home/kaliuser/Documents/CPP/ZeldaRemake/build:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/home/kaliuser/Documents/CPP/ZeldaRemake/build/Executables/ZeldaGame")
-    endif()
-  endif()
-endif()
-
 if(CMAKE_INSTALL_COMPONENT)
   set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 else()

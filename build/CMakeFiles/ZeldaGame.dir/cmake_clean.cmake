@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ZeldaGame.dir/src/main.cpp.o.d"
   "CMakeFiles/ZeldaGame.dir/src/zeldaEng.cpp.o"
   "CMakeFiles/ZeldaGame.dir/src/zeldaEng.cpp.o.d"
-  "Executables/ZeldaGame"
-  "Executables/ZeldaGame.pdb"
+  "ZeldaGame"
+  "ZeldaGame.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

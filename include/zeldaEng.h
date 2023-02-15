@@ -2,8 +2,9 @@
 
 #ifndef Game_hpp
 #define Game_hpp
-#include "logger/log.h"
+#include "log.h"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <stdio.h>
 
 class ZeldaEng {

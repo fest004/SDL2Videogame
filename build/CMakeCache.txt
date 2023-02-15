@@ -234,6 +234,9 @@ Project_SOURCE_DIR:STATIC=/home/kaliuser/Documents/CPP/ZeldaRemake
 //The directory containing a CMake configuration file for SDL2.
 SDL2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
 
+//Path to a library.
+SDL2_IMAGE_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2_image.so
+
 //The directory containing a CMake configuration file for SDL2_image.
 SDL2_image_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2_image
 
@@ -257,6 +260,9 @@ ZeldaGame_SOURCE_DIR:STATIC=/home/kaliuser/Documents/CPP/ZeldaRemake
 
 //The directory containing a CMake configuration file for fmt.
 fmt_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/fmt
+
+//Path to a library.
+libSDL2_image-2.0.so.0:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2_image.so
 
 //The directory containing a CMake configuration file for spdlog.
 spdlog_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/spdlog

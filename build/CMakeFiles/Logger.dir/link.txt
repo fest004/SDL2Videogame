@@ -1,1 +1,1 @@
-/usr/bin/c++ -fPIC -shared -Wl,-soname,libLogger.so -o libLogger.so CMakeFiles/Logger.dir/src/logger/log.cpp.o 
+/usr/bin/c++ -fPIC -shared -Wl,-soname,libLogger.so -o libLogger.so CMakeFiles/Logger.dir/src/log.cpp.o 

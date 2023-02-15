@@ -85,51 +85,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles /home/kaliuser/Documents/CPP/ZeldaRemake/build//CMakeFiles/progress.marks
@@ -187,29 +142,29 @@ ZeldaGame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ZeldaGame.dir/build.make CMakeFiles/ZeldaGame.dir/build
 .PHONY : ZeldaGame/fast
 
-src/logger/log.o: src/logger/log.cpp.o
-.PHONY : src/logger/log.o
+src/log.o: src/log.cpp.o
+.PHONY : src/log.o
 
 # target to build an object file
-src/logger/log.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/logger/log.cpp.o
-.PHONY : src/logger/log.cpp.o
+src/log.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/log.cpp.o
+.PHONY : src/log.cpp.o
 
-src/logger/log.i: src/logger/log.cpp.i
-.PHONY : src/logger/log.i
+src/log.i: src/log.cpp.i
+.PHONY : src/log.i
 
 # target to preprocess a source file
-src/logger/log.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/logger/log.cpp.i
-.PHONY : src/logger/log.cpp.i
+src/log.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/log.cpp.i
+.PHONY : src/log.cpp.i
 
-src/logger/log.s: src/logger/log.cpp.s
-.PHONY : src/logger/log.s
+src/log.s: src/log.cpp.s
+.PHONY : src/log.s
 
 # target to generate assembly for a file
-src/logger/log.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/logger/log.cpp.s
-.PHONY : src/logger/log.cpp.s
+src/log.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Logger.dir/build.make CMakeFiles/Logger.dir/src/log.cpp.s
+.PHONY : src/log.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -266,16 +221,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... Logger"
 	@echo "... ZeldaGame"
-	@echo "... src/logger/log.o"
-	@echo "... src/logger/log.i"
-	@echo "... src/logger/log.s"
+	@echo "... src/log.o"
+	@echo "... src/log.i"
+	@echo "... src/log.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

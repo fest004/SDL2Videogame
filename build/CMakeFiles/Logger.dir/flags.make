@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DLogger_EXPORTS
 
-CXX_INCLUDES = -I/home/kaliuser/Documents/CPP/ZeldaRemake
+CXX_INCLUDES = 
 
-CXX_FLAGS = -fPIC
+CXX_FLAGS = -fPIC -std=gnu++11
 

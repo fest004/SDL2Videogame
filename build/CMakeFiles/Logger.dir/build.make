@@ -69,28 +69,28 @@ include CMakeFiles/Logger.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Logger.dir/flags.make
 
-CMakeFiles/Logger.dir/src/logger/log.cpp.o: CMakeFiles/Logger.dir/flags.make
-CMakeFiles/Logger.dir/src/logger/log.cpp.o: /home/kaliuser/Documents/CPP/ZeldaRemake/src/logger/log.cpp
-CMakeFiles/Logger.dir/src/logger/log.cpp.o: CMakeFiles/Logger.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Logger.dir/src/logger/log.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Logger.dir/src/logger/log.cpp.o -MF CMakeFiles/Logger.dir/src/logger/log.cpp.o.d -o CMakeFiles/Logger.dir/src/logger/log.cpp.o -c /home/kaliuser/Documents/CPP/ZeldaRemake/src/logger/log.cpp
+CMakeFiles/Logger.dir/src/log.cpp.o: CMakeFiles/Logger.dir/flags.make
+CMakeFiles/Logger.dir/src/log.cpp.o: /home/kaliuser/Documents/CPP/ZeldaRemake/src/log.cpp
+CMakeFiles/Logger.dir/src/log.cpp.o: CMakeFiles/Logger.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Logger.dir/src/log.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Logger.dir/src/log.cpp.o -MF CMakeFiles/Logger.dir/src/log.cpp.o.d -o CMakeFiles/Logger.dir/src/log.cpp.o -c /home/kaliuser/Documents/CPP/ZeldaRemake/src/log.cpp
 
-CMakeFiles/Logger.dir/src/logger/log.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Logger.dir/src/logger/log.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kaliuser/Documents/CPP/ZeldaRemake/src/logger/log.cpp > CMakeFiles/Logger.dir/src/logger/log.cpp.i
+CMakeFiles/Logger.dir/src/log.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Logger.dir/src/log.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kaliuser/Documents/CPP/ZeldaRemake/src/log.cpp > CMakeFiles/Logger.dir/src/log.cpp.i
 
-CMakeFiles/Logger.dir/src/logger/log.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Logger.dir/src/logger/log.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kaliuser/Documents/CPP/ZeldaRemake/src/logger/log.cpp -o CMakeFiles/Logger.dir/src/logger/log.cpp.s
+CMakeFiles/Logger.dir/src/log.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Logger.dir/src/log.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kaliuser/Documents/CPP/ZeldaRemake/src/log.cpp -o CMakeFiles/Logger.dir/src/log.cpp.s
 
 # Object files for target Logger
 Logger_OBJECTS = \
-"CMakeFiles/Logger.dir/src/logger/log.cpp.o"
+"CMakeFiles/Logger.dir/src/log.cpp.o"
 
 # External object files for target Logger
 Logger_EXTERNAL_OBJECTS =
 
-libLogger.so: CMakeFiles/Logger.dir/src/logger/log.cpp.o
+libLogger.so: CMakeFiles/Logger.dir/src/log.cpp.o
 libLogger.so: CMakeFiles/Logger.dir/build.make
 libLogger.so: CMakeFiles/Logger.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kaliuser/Documents/CPP/ZeldaRemake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libLogger.so"

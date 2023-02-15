@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DFMT_SHARED -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB
 
-CXX_INCLUDES = -I/home/kaliuser/Documents/CPP/ZeldaRemake -isystem /usr/include/SDL2
+CXX_INCLUDES = -isystem /usr/include/SDL2
 
-CXX_FLAGS = 
+CXX_FLAGS = -std=gnu++11
 

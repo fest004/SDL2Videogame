@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.10)
 
 project(ZeldaGame)
 
+# Set C++ standard to 11
+set(CMAKE_CXX_STANDARD 11)
+
 # Add your source files here
 set(SOURCES
     src/main.cpp
@@ -11,26 +14,24 @@ set(SOURCES
 )
 
 # Find required libraries
-find_package(spdlog REQUIRED)
 find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
+find_package(spdlog REQUIRED)
 
 # Build the Logger library
 add_library(Logger SHARED
-    src/logger/log.cpp
-    include/logger/log.h
-    include/logger/logger.h
+    src/log.cpp
+    include/log.h
+    include/logger.h
 )
 
 # Link the Logger library to the ZeldaGame executable
-add_executable(ZeldaGame ${SOURCES})
-target_link_libraries(ZeldaGame PRIVATE spdlog::spdlog SDL2::SDL2 Logger)
+add_executable(${PROJECT_NAME} ${SOURCES})
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_image)
+target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog Logger ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
 
-# Create a separate directory for the executable file
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/Executables)
 
-# Install the executable file to the build directory
-install(TARGETS ZeldaGame DESTINATION ${EXECUTABLE_OUTPUT_PATH})
 
-# Include directories for ZeldaEng.h and Log.h
-target_include_directories(ZeldaGame PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(Logger PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+#And the path to my SDL2 and SDL2_image libraries are: "/usr/lib/x86_64-linux-gnu"
