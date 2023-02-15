@@ -1,5 +1,5 @@
-Build/CMakeCache.txt 
-Build/libLogger.so
-Build/Logger
-Build/Makefile
-Build/cmake_install_cmake
+build/CMakeCache.txt 
+# build/libLogger.so
+build/Logger
+# build/Makefile
+build/cmake_install_cmake
