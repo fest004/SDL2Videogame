@@ -1,14 +1,19 @@
 #include "../include/zeldaEng.h"
 #include "../include/logger.h"
+#include "textureManager.cpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_video.h>
+#include <bits/chrono.h>
+#include <chrono>
 #include <iostream>
+#include <thread>
 
 SDL_Texture *playerTexture;
+SDL_Rect sourceRect, destinationRect;
 
 ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
@@ -17,7 +22,6 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
                     int height, bool fullscreen) {
 
   LogManager.Init();
-
   ZeldaTrace("ZeldaEngine V{}.{}", 0, 1);
 
   int flags = 0;
@@ -47,13 +51,8 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   } else {
     isRunning = false;
   }
-
-  SDL_Surface *tmpSurface =
-      IMG_Load("../assets/spritesheets/zeldaleftTest.png");
-  if (tmpSurface == NULL)
-    ZeldaError("Could not load IMG", SDL_GetError());
-  playerTexture = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-  SDL_FreeSurface(tmpSurface);
+  playerTexture = textureManager::loadTexture(
+      "../assets/spritesheets/zeldaleftTest.png", renderer);
 }
 
 void ZeldaEng::EventHandle() {
@@ -67,13 +66,20 @@ void ZeldaEng::EventHandle() {
   }
 }
 
-void ZeldaEng::Update() {}
+void ZeldaEng::Update() {
+  destinationRect.h = 25;
+  destinationRect.w = 25;
+  destinationRect.x = 400;
+  destinationRect.y = 200;
+}
+
+void ZeldaEng::FixedUpdate() { ZeldaInfo("Hi"); }
 
 void ZeldaEng::Render() {
   SDL_RenderClear(renderer);
   // Add stuff to render
 
-  SDL_RenderCopy(renderer, playerTexture, NULL, NULL);
+  SDL_RenderCopy(renderer, playerTexture, NULL, &destinationRect);
 
   SDL_RenderPresent(renderer);
 }

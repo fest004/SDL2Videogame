@@ -3,6 +3,7 @@
 #ifndef Game_hpp
 #define Game_hpp
 #include "log.h"
+#include "timestep.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
@@ -18,6 +19,7 @@ public:
 
   void EventHandle();
   void Update();
+  void FixedUpdate();
   void Render();
   void Clean();
 
