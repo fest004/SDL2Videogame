@@ -318,9 +318,11 @@ CMakeFiles/ZeldaGame.dir/src/zeldaEng.cpp.o: \
  /home/kaliuser/Documents/CPP/ZeldaRemake/src/../include/timestep.h \
  /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL.h \
  /home/kaliuser/Documents/CPP/ZeldaRemake/src/../include/logger.h \
- /home/kaliuser/Documents/CPP/ZeldaRemake/src/textureManager.cpp \
- /home/kaliuser/Documents/CPP/ZeldaRemake/src/../include/textureManager.h \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/src/gameObject.cpp \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/src/../include/gameObject.h \
  /home/kaliuser/Documents/CPP/ZeldaRemake/src/../include/zeldaEng.h \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/src/../include/textureManager.h \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/src/textureManager.cpp \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_surface.h \
  /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_video.h \
  /usr/include/c++/12/iostream /usr/include/c++/12/ostream \

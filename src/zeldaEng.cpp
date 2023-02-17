@@ -1,5 +1,6 @@
 #include "../include/zeldaEng.h"
 #include "../include/logger.h"
+#include "gameObject.cpp"
 #include "textureManager.cpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
@@ -12,11 +13,12 @@
 #include <iostream>
 #include <thread>
 
-SDL_Texture *playerTexture;
-SDL_Rect sourceRect, destinationRect;
+gameObject *player;
 
 ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
+
+SDL_Renderer *ZeldaEng::renderer = nullptr;
 
 void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
                     int height, bool fullscreen) {
@@ -51,8 +53,7 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   } else {
     isRunning = false;
   }
-  playerTexture = textureManager::loadTexture(
-      "../assets/spritesheets/zeldaleftTest.png", renderer);
+  player = new gameObject("../assets/spritesheets/zeldaleftTest.png", 200, 200);
 }
 
 void ZeldaEng::EventHandle() {
@@ -66,21 +67,14 @@ void ZeldaEng::EventHandle() {
   }
 }
 
-void ZeldaEng::Update() {
-  destinationRect.h = 25;
-  destinationRect.w = 25;
-  destinationRect.x = 400;
-  destinationRect.y = 200;
-}
+void ZeldaEng::Update() {}
 
-void ZeldaEng::FixedUpdate() { ZeldaInfo("Hi"); }
+void ZeldaEng::FixedUpdate() { player->Update(); }
 
 void ZeldaEng::Render() {
   SDL_RenderClear(renderer);
   // Add stuff to render
-
-  SDL_RenderCopy(renderer, playerTexture, NULL, &destinationRect);
-
+  player->Render();
   SDL_RenderPresent(renderer);
 }
 
