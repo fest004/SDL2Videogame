@@ -2,6 +2,7 @@
 #include "../include/logger.h"
 #include "gameObject.cpp"
 #include "textureManager.cpp"
+#include "tilemap.cpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_image.h>
@@ -14,6 +15,8 @@
 #include <thread>
 
 gameObject *player;
+
+tilemap *map;
 
 ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
@@ -53,6 +56,7 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   } else {
     isRunning = false;
   }
+  map = new tilemap();
   player = new gameObject("../assets/spritesheets/zeldaleftTest.png", 200, 200);
 }
 
@@ -74,6 +78,10 @@ void ZeldaEng::FixedUpdate() { player->Update(); }
 void ZeldaEng::Render() {
   SDL_RenderClear(renderer);
   // Add stuff to render
+  textureManager::setBackground(
+      "../assets/backgrounds/CityBackground/city 1/10.png");
+
+  map->DrawTileMap();
   player->Render();
   SDL_RenderPresent(renderer);
 }
