@@ -324,6 +324,8 @@ CMakeFiles/ZeldaGame.dir/src/zeldaEng.cpp.o: \
  /home/kaliuser/Documents/CPP/ZeldaRemake/src/../include/textureManager.h \
  /home/kaliuser/Documents/CPP/ZeldaRemake/src/textureManager.cpp \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_surface.h \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/src/tilemap.cpp \
+ /home/kaliuser/Documents/CPP/ZeldaRemake/src/../include/tilemap.h \
  /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_video.h \
  /usr/include/c++/12/iostream /usr/include/c++/12/ostream \
  /usr/include/c++/12/ios /usr/include/c++/12/bits/basic_ios.h \
