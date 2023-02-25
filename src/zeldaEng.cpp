@@ -1,4 +1,6 @@
 #include "../include/zeldaEng.h"
+#include "../include/components.h"
+#include "../include/ecs.h"
 #include "../include/logger.h"
 #include "gameObject.cpp"
 #include "textureManager.cpp"
@@ -22,6 +24,9 @@ ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
 
 SDL_Renderer *ZeldaEng::renderer = nullptr;
+
+Manager manager;
+auto &newPlayer(manager.addEntity());
 
 void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
                     int height, bool fullscreen) {
@@ -58,6 +63,8 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   }
   map = new tilemap();
   player = new gameObject("../assets/spritesheets/zeldaleftTest.png", 200, 200);
+
+  newPlayer.addComponent<PositionComponent>();
 }
 
 void ZeldaEng::EventHandle() {
@@ -71,7 +78,11 @@ void ZeldaEng::EventHandle() {
   }
 }
 
-void ZeldaEng::Update() {}
+void ZeldaEng::Update() {
+  manager.update();
+  ZeldaInfo(newPlayer.getComponent<PositionComponent>().GetX());
+  ZeldaInfo(newPlayer.getComponent<PositionComponent>().GetY());
+}
 
 void ZeldaEng::FixedUpdate() { player->Update(); }
 
