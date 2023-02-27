@@ -1,7 +1,7 @@
+#include "zeldaEng.h"
+
 #ifndef textureManager_h_
 #define textureManager_h_
-
-#include "zeldaEng.h"
 
 class textureManager {
 public:

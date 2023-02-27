@@ -1,3 +1,5 @@
+#ifndef timestep_h
+#define timestep_h
 
 class Timestep {
 public:
@@ -9,3 +11,5 @@ public:
 private:
   float m_Time;
 };
+
+#endif

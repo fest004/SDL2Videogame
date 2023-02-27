@@ -1,5 +1,8 @@
 #include "ecs.h"
 
+#ifndef COMPONENTS_H
+#define COMPONENTS_H
+
 class PositionComponent : public Component {
 public:
   int GetX() { return xpos; }
@@ -24,3 +27,5 @@ private:
   int xpos = 0;
   int ypos = 0;
 };
+
+#endif

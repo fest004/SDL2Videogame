@@ -1,5 +1,4 @@
-#include "../include/tilemap.h"
-#include "../include/textureManager.h"
+#include "../include/core.h"
 
 int defaultMap[20][25] = {
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},

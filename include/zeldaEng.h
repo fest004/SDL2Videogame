@@ -1,12 +1,11 @@
-
-
-#ifndef Game_hpp
-#define Game_hpp
 #include "log.h"
 #include "timestep.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
+
+#ifndef zeldaEng_h
+#define zeldaEng_h
 
 class ZeldaEng {
 

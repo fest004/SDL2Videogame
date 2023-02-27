@@ -1,8 +1,4 @@
-#include "../include/log.h"
-#include "../include/logger.h"
-#include <spdlog/common.h>
-#include <spdlog/sinks/stdout_color_sinks.h>
-#include <vector>
+#include "../include/core.h"
 
 void Log::Init() {
   auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();

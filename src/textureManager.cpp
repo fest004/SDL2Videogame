@@ -1,8 +1,4 @@
-#include "../include/textureManager.h"
-#include "../include/logger.h"
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_surface.h>
+#include "../include/core.h"
 
 SDL_Texture *textureManager::loadTexture(const char *texture) {
 

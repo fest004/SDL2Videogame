@@ -1,19 +1,7 @@
-#include "../include/zeldaEng.h"
-#include "../include/components.h"
-#include "../include/ecs.h"
-#include "../include/logger.h"
+#include "../include/core.h"
 #include "gameObject.cpp"
 #include "textureManager.cpp"
 #include "tilemap.cpp"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_surface.h>
-#include <SDL2/SDL_video.h>
-#include <bits/chrono.h>
-#include <chrono>
-#include <iostream>
 #include <thread>
 
 gameObject *player;

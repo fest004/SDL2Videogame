@@ -1,12 +1,12 @@
-#ifndef ecs_h_
-#define ecs_h_
-
 #include <algorithm>
 #include <array>
 #include <bitset>
 #include <iostream>
 #include <memory>
 #include <vector>
+
+#ifndef ecs_h_
+#define ecs_h_
 
 class Component;
 class Entity;

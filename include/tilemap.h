@@ -1,5 +1,8 @@
 #include "zeldaEng.h"
 
+#ifndef tilemap_h
+#define tilemap_h
+
 class tilemap {
 public:
   tilemap();
@@ -17,3 +20,5 @@ private:
 
   int map[20][25];
 };
+
+#endif

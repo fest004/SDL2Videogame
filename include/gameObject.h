@@ -1,6 +1,9 @@
 
 #include "zeldaEng.h"
 
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
+
 class gameObject {
 public:
   gameObject(const char *texturesheet, int initialX, int initialY);
@@ -16,3 +19,5 @@ private:
   SDL_Texture *objectTexture;
   SDL_Rect sourceRectangle, destinationRectangle;
 };
+
+#endif
