@@ -1,8 +1,8 @@
 #ifndef CORE_H
 #define CORE_H
 
-#include "components.h"
-#include "ecs.h"
+#include "ECS/components.h"
+#include "ECS/ecs.h"
 #include "gameObject.h"
 #include "log.h"
 #include "logger.h"

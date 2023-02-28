@@ -4,8 +4,6 @@
 #include "tilemap.cpp"
 #include <thread>
 
-gameObject *player;
-
 tilemap *map;
 
 ZeldaEng::ZeldaEng(){};
@@ -14,7 +12,7 @@ ZeldaEng::~ZeldaEng(){};
 SDL_Renderer *ZeldaEng::renderer = nullptr;
 
 Manager manager;
-auto &newPlayer(manager.addEntity());
+auto &Player(manager.addEntity());
 
 void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
                     int height, bool fullscreen) {
@@ -50,9 +48,10 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
     isRunning = false;
   }
   map = new tilemap();
-  player = new gameObject("../assets/spritesheets/zeldaleftTest.png", 200, 200);
 
-  newPlayer.addComponent<PositionComponent>();
+  Player.addComponent<PositionComponent>(200, 200);
+  Player.addComponent<spriteComponent>(
+      "../assets/spritesheets/zeldaleftTest.png");
 }
 
 void ZeldaEng::EventHandle() {
@@ -67,12 +66,15 @@ void ZeldaEng::EventHandle() {
 }
 
 void ZeldaEng::Update() {
+  // Player.draw();
+  //
+  //
   manager.update();
-  ZeldaInfo(newPlayer.getComponent<PositionComponent>().GetX());
-  ZeldaInfo(newPlayer.getComponent<PositionComponent>().GetY());
+  manager.draw();
+  manager.refresh();
 }
 
-void ZeldaEng::FixedUpdate() { player->Update(); }
+void ZeldaEng::FixedUpdate() {}
 
 void ZeldaEng::Render() {
   SDL_RenderClear(renderer);
@@ -81,7 +83,7 @@ void ZeldaEng::Render() {
       "../assets/backgrounds/CityBackground/city 1/10.png");
 
   map->DrawTileMap();
-  player->Render();
+  Player.draw();
   SDL_RenderPresent(renderer);
 }
 

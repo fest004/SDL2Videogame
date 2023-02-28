@@ -1,16 +1,27 @@
-#include "ecs.h"
+#ifndef POSITION_COMPONENT_H
+#define POSITION_COMPONENT_H
 
-#ifndef COMPONENTS_H
-#define COMPONENTS_H
+#include "ecs.h"
 
 class PositionComponent : public Component {
 public:
+  PositionComponent() {
+    xpos = 0;
+    ypos = 0;
+  }
+
+  PositionComponent(int x, int y) {
+    xpos = x;
+    ypos = y;
+  }
+  // ~PositionComponent();
+
   int GetX() { return xpos; }
   int GetY() { return ypos; }
 
   void init() override {
-    xpos = 0;
-    ypos = 0;
+    // xpos = 0;
+    // ypos = 0;
   }
 
   void update() override {

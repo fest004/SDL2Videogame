@@ -19,7 +19,8 @@ inline ComponentID getComponentTypeID() {
 }
 
 template <typename Type> inline ComponentID getComponentTypeID() noexcept {
-  static ComponentID typeID = getComponentTypeID();
+  // static ComponentID typeID = getComponentTypeID();
+  static ComponentID typeID{getComponentTypeID()};
   return typeID;
 }
 
@@ -44,10 +45,11 @@ public:
   void update() {
     for (auto &component : components)
       component->update();
+  }
+  void draw() {
     for (auto &component : components)
       component->draw();
   }
-  void draw() {}
   bool isActive() const { return active; }
   void destroy() { active = false; }
 
