@@ -1,4 +1,5 @@
 #include "../include/core.h"
+#include "Vector2D.cpp"
 #include "gameObject.cpp"
 #include "textureManager.cpp"
 #include "tilemap.cpp"
@@ -49,8 +50,8 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   }
   map = new tilemap();
 
-  Player.addComponent<PositionComponent>(200, 200);
-  Player.addComponent<spriteComponent>(
+  Player.addComponent<TransformComponent>(0, 200);
+  Player.addComponent<SpriteComponent>(
       "../assets/spritesheets/zeldaleftTest.png");
 }
 
@@ -72,6 +73,11 @@ void ZeldaEng::Update() {
   manager.update();
   manager.draw();
   manager.refresh();
+  Player.getComponent<TransformComponent>().position.AddVector(Vector2D(5, 0));
+  if (Player.getComponent<TransformComponent>().position.x > 20) {
+    Player.getComponent<SpriteComponent>().setTexture(
+        "../assets/Tilemaps/CityTilemap/Objects/2.png");
+  }
 }
 
 void ZeldaEng::FixedUpdate() {}

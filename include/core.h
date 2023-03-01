@@ -3,6 +3,7 @@
 
 #include "ECS/components.h"
 #include "ECS/ecs.h"
+#include "Vector2D.h"
 #include "gameObject.h"
 #include "log.h"
 #include "logger.h"

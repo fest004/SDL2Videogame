@@ -2,18 +2,24 @@
 #define SPRITE_COMPONENT_H
 
 #include "../textureManager.h"
-#include "positionComponent.h"
+#include "TransformComponent.h"
 #include <SDL2/SDL.h>
 
-class spriteComponent : public Component {
+class SpriteComponent : public Component {
 public:
-  spriteComponent() = default;
-  spriteComponent(const char *path) {
+  SpriteComponent() = default;
+
+  SpriteComponent(const char *path) {
+    texture = textureManager::loadTexture(path);
+  }
+
+  void setTexture(const char *path) {
+
     texture = textureManager::loadTexture(path);
   }
 
   void init() override {
-    position = &entity->getComponent<PositionComponent>();
+    transform = &entity->getComponent<TransformComponent>();
 
     sourceRectangle.x = 0;
     sourceRectangle.y = 0;
@@ -25,8 +31,8 @@ public:
   }
 
   void update() override {
-    destinationRect.x = position->GetX();
-    destinationRect.y = position->GetY();
+    destinationRect.x = (int)transform->position.x;
+    destinationRect.y = (int)transform->position.y;
   }
 
   void draw() override {
@@ -34,7 +40,7 @@ public:
   }
 
 private:
-  PositionComponent *position;
+  TransformComponent *transform;
   SDL_Texture *texture;
   SDL_Rect sourceRectangle, destinationRect;
 };
