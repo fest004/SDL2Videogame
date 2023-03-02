@@ -10,6 +10,11 @@ tilemap *map;
 ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
 
+Timer timer;
+Countdown countdown(5000);
+
+SDL_Event ZeldaEng::event;
+
 SDL_Renderer *ZeldaEng::renderer = nullptr;
 
 Manager manager;
@@ -53,10 +58,10 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   Player.addComponent<TransformComponent>(0, 200);
   Player.addComponent<SpriteComponent>(
       "../assets/spritesheets/zeldaleftTest.png");
+  Player.addComponent<KeyboardController>();
 }
 
 void ZeldaEng::EventHandle() {
-  SDL_Event event;
   SDL_PollEvent(&event);
 
   switch (event.type) {
@@ -66,6 +71,9 @@ void ZeldaEng::EventHandle() {
   }
 }
 
+int once = 0;
+int twice = 0;
+
 void ZeldaEng::Update() {
   // Player.draw();
   //
@@ -73,10 +81,14 @@ void ZeldaEng::Update() {
   manager.update();
   manager.draw();
   manager.refresh();
-  Player.getComponent<TransformComponent>().position.AddVector(Vector2D(5, 0));
-  if (Player.getComponent<TransformComponent>().position.x > 20) {
-    Player.getComponent<SpriteComponent>().setTexture(
-        "../assets/Tilemaps/CityTilemap/Objects/2.png");
+  countdown.tick();
+  if (countdown.isEnded() && once != 1) {
+    ZeldaDebug("Countdown ended");
+    countdown.reset(10000);
+    twice = 2;
+  }
+  if (countdown.isEnded() && twice == 2) {
+    ZeldaDebug("Countdown ended again");
   }
 }
 
