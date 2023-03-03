@@ -1,5 +1,6 @@
 #include "../include/core.h"
 #include "Vector2D.cpp"
+#include "collision.cpp"
 #include "gameObject.cpp"
 #include "textureManager.cpp"
 #include "tilemap.cpp"
@@ -11,7 +12,6 @@ ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
 
 Timer timer;
-Countdown countdown(5000);
 
 SDL_Event ZeldaEng::event;
 
@@ -19,6 +19,7 @@ SDL_Renderer *ZeldaEng::renderer = nullptr;
 
 Manager manager;
 auto &Player(manager.addEntity());
+auto &wall(manager.addEntity());
 
 void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
                     int height, bool fullscreen) {
@@ -59,6 +60,12 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   Player.addComponent<SpriteComponent>(
       "../assets/spritesheets/zeldaleftTest.png");
   Player.addComponent<KeyboardController>();
+  Player.addComponent<ColliderComponent>("player");
+
+  wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
+  wall.addComponent<SpriteComponent>(
+      "../assets/spritesheets/zeldaleftTest.png");
+  wall.addComponent<ColliderComponent>("wall");
 }
 
 void ZeldaEng::EventHandle() {
@@ -81,14 +88,10 @@ void ZeldaEng::Update() {
   manager.update();
   manager.draw();
   manager.refresh();
-  countdown.tick();
-  if (countdown.isEnded() && once != 1) {
-    ZeldaDebug("Countdown ended");
-    countdown.reset(10000);
-    twice = 2;
-  }
-  if (countdown.isEnded() && twice == 2) {
-    ZeldaDebug("Countdown ended again");
+
+  if (Collision::AABB(Player.getComponent<ColliderComponent>().collider,
+                      wall.getComponent<ColliderComponent>().collider)) {
+    ZeldaInfo("Wall hit");
   }
 }
 

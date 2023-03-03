@@ -2,7 +2,6 @@
 #define CORE_H
 
 #include "ECS/components.h"
-#include "ECS/ecs.h"
 #include "Vector2D.h"
 #include "countdown.h"
 #include "gameObject.h"

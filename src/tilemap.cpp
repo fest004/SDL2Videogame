@@ -44,6 +44,12 @@ tilemap::tilemap() {
   destination.y = 0;
 }
 
+tilemap::~tilemap() {
+  SDL_DestroyTexture(textureMissing);
+  SDL_DestroyTexture(ground1);
+  SDL_DestroyTexture(platform2);
+}
+
 void tilemap::LoadTilemap(int array[20][25]) {
   for (int row = 0; row < 20; row++) {
     for (int column = 0; column < 25; column++) {
