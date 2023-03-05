@@ -3,6 +3,10 @@
 
 class Vector2D {
 public:
+  // Making a Vector2D class consising of two floats in a vector,
+  // Vector2D(x, y)
+  // Added operator overloading for simple and quick vector math.
+  // +-*/
   float x;
   float y;
   Vector2D();

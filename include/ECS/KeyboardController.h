@@ -11,6 +11,10 @@ public:
     transform = &entity->getComponent<TransformComponent>();
   }
 
+  // Simple switch case to see input, and sets velocity on x and y axis based on
+  // WASD
+  //
+  // To be refactored
   void update() override {
     if (ZeldaEng::event.type == SDL_KEYDOWN) {
       switch (ZeldaEng::event.key.keysym.sym) {
@@ -31,6 +35,8 @@ public:
         break;
       }
     }
+
+    // Stopping when letting key go
 
     if (ZeldaEng::event.type == SDL_KEYUP) {
       switch (ZeldaEng::event.key.keysym.sym) {

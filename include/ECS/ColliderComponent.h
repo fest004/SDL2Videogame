@@ -5,18 +5,24 @@
 class ColliderComponent : public Component {
 public:
   SDL_Rect collider;
+
+  // A tag to recognise what kind of collider it is
   std::string tag;
 
+  // Setting a position for the component
   TransformComponent *transform;
 
   ColliderComponent(std::string t) { tag = t; }
 
+  // Sets a transformcomponent to a Collider if not set already
   void init() override {
     if (!entity->hasComponent<TransformComponent>()) {
       entity->addComponent<TransformComponent>();
     }
     transform = &entity->getComponent<TransformComponent>();
   }
+
+  // Keeping its position updated throughout
 
   void update() override {
     collider.x = static_cast<int>(transform->position.x);
