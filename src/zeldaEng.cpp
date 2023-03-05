@@ -89,9 +89,13 @@ void ZeldaEng::Update() {
   manager.draw();
   manager.refresh();
 
+  // Collision logic, to be moved
   if (Collision::AABB(Player.getComponent<ColliderComponent>().collider,
                       wall.getComponent<ColliderComponent>().collider)) {
     ZeldaInfo("Wall hit");
+    // Minus one makes player bounce, ideally want it to just stay in place,
+    // if you times by 0 player is infinitely stuck
+    Player.getComponent<TransformComponent>().velocity * -1;
   }
 }
 
@@ -105,6 +109,7 @@ void ZeldaEng::Render() {
 
   map->DrawTileMap();
   Player.draw();
+  wall.draw();
   SDL_RenderPresent(renderer);
 }
 
