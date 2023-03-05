@@ -3,6 +3,9 @@
 
 #include "SDL2/SDL.h"
 
+// Simple timer class to keep track of time using SDL_GetTicks64, that tracks
+// how many ticks since sdl was initialized
+
 class Timer {
 public:
   Timer() {

@@ -1,6 +1,8 @@
 #ifndef timestep_h
 #define timestep_h
 
+// Unused as of now, prototype for FixedUpdate function
+
 class Timestep {
 public:
   Timestep(float time = 0.0f) { m_Time = time; }
