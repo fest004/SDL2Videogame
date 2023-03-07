@@ -1,3 +1,4 @@
+#include "../zeldaEng.h"
 #include "SDL2/SDL.h"
 #include "TransformComponent.h"
 #include <string>
@@ -20,6 +21,10 @@ public:
       entity->addComponent<TransformComponent>();
     }
     transform = &entity->getComponent<TransformComponent>();
+
+    std::cout << this->tag << std::endl;
+
+    ZeldaEng::colliders.push_back(this);
   }
 
   // Keeping its position updated throughout

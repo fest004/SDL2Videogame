@@ -74,6 +74,19 @@ Vector2D &Vector2D::operator/=(const Vector2D &vec) {
   return this->DivideVector(vec);
 }
 
-// Printing Vector easily
+Vector2D &Vector2D::operator*(const int &i) {
+  this->x *= i;
+  this->y *= i;
 
+  return *this;
+}
+
+Vector2D &Vector2D::Zero() {
+  this->x = 0;
+  this->y = 0;
+
+  return *this;
+}
+
+// Printing Vector easily
 void PrintVector(Vector2D vec) { ZeldaTrace("(", vec.x, ", ", vec.y, ")"); }
