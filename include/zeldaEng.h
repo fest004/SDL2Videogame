@@ -3,6 +3,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
+#include <vector>
+
+class ColliderComponent;
 
 #ifndef zeldaEng_h
 #define zeldaEng_h
@@ -26,6 +29,7 @@ public:
 
   static SDL_Renderer *renderer;
   static SDL_Event event;
+  static std::vector<ColliderComponent *> colliders;
 
 private:
   int count;

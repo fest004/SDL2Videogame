@@ -10,3 +10,15 @@ bool Collision::AABB(const SDL_Rect &rectangle1, const SDL_Rect &rectangle2) {
   }
   return false;
 }
+
+bool Collision::AABB(const ColliderComponent &collider1,
+                     const ColliderComponent &collider2) {
+
+  // if (AABB(collider1.collider, collider2.collider) && collider2.tag !=
+  // "player") {
+  if (AABB(collider1.collider, collider2.collider)) {
+    ZeldaInfo(collider1.tag + " and " + collider2.tag + " collided! ");
+    return true;
+  }
+  return false;
+}
