@@ -4,8 +4,8 @@ ZeldaEng *engine = nullptr;
 
 int main(int argc, const char *argv[]) {
   engine = new ZeldaEng();
-  engine->Init("Zelda", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800,
-               600, false);
+  engine->Init("Zelda", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024,
+               1024, false);
 
   auto lastUpdate = std::chrono::high_resolution_clock::now();
   const float updatesPerSecond = 50.0f;

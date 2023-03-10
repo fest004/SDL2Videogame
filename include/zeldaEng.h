@@ -25,6 +25,8 @@ public:
   void Render();
   void Clean();
 
+  static void AddTile(int ID, int x, int y);
+
   bool Running() { return isRunning; };
 
   static SDL_Renderer *renderer;
