@@ -26,15 +26,31 @@ public:
 
     switch (tileID) {
     case 0:
-      path = "../assets/Tilemaps/CityTilemap/Tiles/"
-             "IndustrialTile_05.png";
+      path = "../assets/DefaultPng.png";
       break;
     case 1:
-      path = "assets/Tilemaps/CityTilemap/Tiles/"
-             "IndustrialTile_18.png";
+      // Ground
+      path = "../assets/Tilemaps/CityTilemap/Tiles/IndustrialTile_05.png";
+      break;
+    case 2:
+      // Box
+      path = "../assets/Tilemaps/CityTilemap/Tiles/IndustrialTile_02.png";
+      break;
+    case 3:
+      // FloatingPlatform
+      path = "../assets/Tilemaps/CityTilemap/Tiles/IndustrialTile_18.png";
+      break;
+    case 4:
+      // Box 2
+      path = "../assets/Tilemaps/CityTilemap/Tiles/IndustrialTile_71.png";
+      break;
+    case 5:
+      // Button looking tile
+      path = "../assets/Tilemaps/CityTilemap/Tiles/IndustrialTile_45.png";
+      break;
     default:
-      path = "../assets/Tilemaps/CityTilemap/Tiles/"
-             "IndustrialTile_18.png";
+      path = "../assets/Tilemaps/CityTilemap/Tiles/IndustrialTile_68.png";
+      break;
     }
   }
 

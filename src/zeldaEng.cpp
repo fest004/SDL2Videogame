@@ -23,9 +23,6 @@ Manager manager;
 auto &Player(manager.addEntity());
 auto &wall(manager.addEntity());
 
-auto &tile0(manager.addEntity());
-auto &tile1(manager.addEntity());
-
 void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
                     int height, bool fullscreen) {
 
@@ -56,11 +53,7 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   }
   map = new tilemap();
 
-  tile0.addComponent<TileComponent>(200, 200, 32, 32, 0);
-  tile0.addComponent<ColliderComponent>("ground");
-
-  tile1.addComponent<TileComponent>(250, 250, 32, 32, 1);
-  tile1.addComponent<ColliderComponent>("platform");
+  tilemap::LoadTilemap("../assets/TestMap3232Nr2.txt", 32, 32);
 
   Player.addComponent<TransformComponent>(0, 200);
   Player.addComponent<SpriteComponent>(
@@ -107,9 +100,7 @@ void ZeldaEng::Render() {
   textureManager::setBackground(
       "../assets/backgrounds/CityBackground/city 1/10.png");
 
-  map->DrawTileMap();
-  tile0.draw();
-  tile1.draw();
+  manager.draw();
   Player.draw();
   wall.draw();
   SDL_RenderPresent(renderer);
@@ -121,4 +112,9 @@ void ZeldaEng::Clean() {
   SDL_DestroyWindow(window);
   SDL_DestroyRenderer(renderer);
   SDL_Quit();
+}
+
+void ZeldaEng::AddTile(int ID, int x, int y) {
+  auto &tile(manager.addEntity());
+  tile.addComponent<TileComponent>(x, y, 32, 32, ID);
 }
