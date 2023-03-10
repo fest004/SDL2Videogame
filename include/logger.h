@@ -4,6 +4,8 @@
 
 #ifndef ZELDA_CONFIG_RELEASE
 
+// Different levels of logging, from general info to critical erros
+
 #define ZeldaTrace(...)                                                        \
   if (spdlog::get(ZELDA_DEFAULT_LOGGER_NAME) != nullptr) {                     \
     spdlog::get(ZELDA_DEFAULT_LOGGER_NAME)->trace(__VA_ARGS__);                \

@@ -5,6 +5,8 @@
 #ifndef LOG_H
 #define LOG_H
 
+// Header for spdlog, great, high speed logging library
+
 class Log {
 public:
   Log() = default;

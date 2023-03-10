@@ -1,6 +1,12 @@
 #ifndef CORE_H
 #define CORE_H
 
+/*
+ * General file for including different header files, as to
+ * not make zeldaEng.cpp a wall of include files.
+ *
+ */
+
 #include "ECS/components.h"
 #include "Vector2D.h"
 #include "countdown.h"

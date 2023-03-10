@@ -9,7 +9,6 @@ public:
   ~tilemap();
 
   static void LoadTilemap(std::string path, int sizeX, int sizeY);
-
 private:
 };
 
