@@ -1,3 +1,6 @@
+#ifndef COLLIDER_COMPONENT_H
+#define COLLIDER_COMPONENT_H
+
 #include "../zeldaEng.h"
 #include "SDL2/SDL.h"
 #include "TransformComponent.h"
@@ -41,3 +44,5 @@ public:
   //
   // }
 };
+
+#endif

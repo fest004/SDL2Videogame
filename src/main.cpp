@@ -26,5 +26,6 @@ int main(int argc, const char *argv[]) {
   }
 
   engine->Clean();
+  delete engine;
   return 0;
 }
