@@ -1,6 +1,7 @@
 #ifndef TILE_COMPONENT_H
 #define TILE_COMPONENT_H
 
+#include "ColliderComponent.h"
 #include "SpriteComponent.h"
 #include "TransformComponent.h"
 #include "ecs.h"
@@ -10,6 +11,10 @@ class TileComponent : public Component {
 public:
   TransformComponent *transform;
   SpriteComponent *sprite;
+  ColliderComponent *colliderComponent;
+  std::string tempTag;
+
+  bool isCollider = false;
 
   SDL_Rect tileRectangle;
   int tileID;
@@ -31,6 +36,8 @@ public:
     case 1:
       // Ground
       path = "../assets/Tilemaps/CityTilemap/Tiles/IndustrialTile_05.png";
+      tempTag = "ground";
+      isCollider = true;
       break;
     case 2:
       // Box
@@ -62,6 +69,11 @@ public:
 
     entity->addComponent<SpriteComponent>(path);
     sprite = &entity->getComponent<SpriteComponent>();
+
+    if (isCollider) {
+      entity->addComponent<ColliderComponent>(tempTag);
+      colliderComponent = &entity->getComponent<ColliderComponent>();
+    }
   }
 };
 

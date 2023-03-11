@@ -55,6 +55,8 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
 
   tilemap::LoadTilemap("../assets/TestMap3232Nr2.txt", 32, 32);
 
+  delete map;
+
   Player.addComponent<TransformComponent>(0, 200);
   Player.addComponent<SpriteComponent>(
       "../assets/spritesheets/zeldaleftTest.png");
