@@ -4,6 +4,7 @@
 #include "../textureManager.h"
 #include "TransformComponent.h"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_render.h>
 
 class SpriteComponent : public Component {
 public:

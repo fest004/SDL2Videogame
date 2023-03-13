@@ -27,7 +27,8 @@ public:
 
     std::cout << this->tag << std::endl;
 
-    ZeldaEng::colliders.push_back(this);
+    auto collider = std::make_shared<ColliderComponent>(*this);
+    ZeldaEng::colliders.push_back(std::unique_ptr<ColliderComponent>(this));
   }
 
   // Keeping its position updated throughout

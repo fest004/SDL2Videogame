@@ -4,6 +4,8 @@
 
 class Countdown {
 public:
+  Countdown() = default;
+  ~Countdown() = default;
   Countdown(int cooldown) {
     // Gets how long SDL has been running
     // and takes in argument that decided how

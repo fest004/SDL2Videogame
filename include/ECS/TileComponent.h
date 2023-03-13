@@ -21,6 +21,7 @@ public:
   const char *path;
 
   TileComponent() = default;
+  ~TileComponent() {}
 
   TileComponent(int x, int y, int w, int h, int ID) {
     tileRectangle.x = x;

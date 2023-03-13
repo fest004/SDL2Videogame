@@ -9,13 +9,14 @@ public:
   Vector2D position;
   Vector2D velocity;
 
-  int speed = 3;
+  int speed = 10;
 
   int height = 32;
   int width = 32;
   int scale = 1;
 
   TransformComponent() { position.Zero(); }
+  ~TransformComponent() = default;
 
   TransformComponent(int sc) {
     position.Zero();

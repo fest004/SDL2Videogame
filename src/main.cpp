@@ -7,21 +7,20 @@ int main(int argc, const char *argv[]) {
   engine->Init("Zelda", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024,
                1024, false);
 
-  auto lastUpdate = std::chrono::high_resolution_clock::now();
-  const float updatesPerSecond = 50.0f;
+  Countdown countdown;
+  countdown.reset(20);
 
   while (engine->Running()) {
     auto currentTime = std::chrono::high_resolution_clock::now();
-    auto time = std::chrono::duration<float>(currentTime - lastUpdate).count();
-    Timestep timestep = time;
+    countdown.tick();
 
     engine->EventHandle();
     engine->Update();
     engine->Render();
 
-    if (timestep.GetSeconds() >= 1.0f / updatesPerSecond) {
+    if (countdown.isEnded()) {
       engine->FixedUpdate();
-      lastUpdate = currentTime;
+      countdown.reset();
     }
   }
 
