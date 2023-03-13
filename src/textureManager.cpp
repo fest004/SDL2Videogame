@@ -4,9 +4,9 @@ SDL_Texture *textureManager::loadTexture(const char *texture) {
 
   SDL_Surface *tempSurface = IMG_Load(texture);
   if (tempSurface == NULL) {
-    int i = 10;
     ZeldaError("Could not load texture!");
     ZeldaError(SDL_GetError());
+    SDL_FreeSurface(tempSurface);
   }
   SDL_Texture *tex =
       SDL_CreateTextureFromSurface(ZeldaEng::renderer, tempSurface);
@@ -31,6 +31,8 @@ void textureManager::setBackground(const char *texture) {
   SDL_Rect destination = {0, 0, screenWidth, screenHeight};
 
   SDL_RenderCopy(ZeldaEng::renderer, tex, NULL, &destination);
+
+  SDL_DestroyTexture(tex);
 
   // SDL_RenderPresent(ZeldaEng::renderer);
 }

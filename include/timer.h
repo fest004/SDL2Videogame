@@ -14,6 +14,8 @@ public:
     elapsedTime = 0;
   }
 
+  ~Timer() = default;
+
   void tick() {
     currentTime = SDL_GetTicks64();
     elapsedTime = currentTime - startTime;

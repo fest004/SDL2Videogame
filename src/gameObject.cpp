@@ -1,4 +1,5 @@
 #include "../include/core.h"
+#include <SDL2/SDL_render.h>
 
 gameObject::gameObject(const char *texturesheet, int initialX, int initialY) {
   objectTexture = textureManager::loadTexture(texturesheet);
@@ -21,4 +22,5 @@ void gameObject::Update() {
 void gameObject::Render() {
   SDL_RenderCopy(ZeldaEng::renderer, objectTexture, &sourceRectangle,
                  &destinationRectangle);
+  SDL_DestroyTexture(objectTexture);
 }

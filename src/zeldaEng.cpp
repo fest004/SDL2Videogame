@@ -11,13 +11,13 @@ tilemap *map;
 ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
 
-Timer timer;
+// Timer timer;
 
 SDL_Event ZeldaEng::event;
 
 SDL_Renderer *ZeldaEng::renderer = nullptr;
 
-std::vector<ColliderComponent *> ZeldaEng::colliders;
+std::vector<std::unique_ptr<ColliderComponent>> ZeldaEng::colliders;
 
 Manager manager;
 auto &Player(manager.addEntity());
@@ -83,7 +83,7 @@ void ZeldaEng::Update() {
   manager.refresh();
   manager.update();
 
-  for (ColliderComponent *collider_component : colliders) {
+  for (auto &collider_component : colliders) {
     if (collider_component->tag != "player") {
       Collision::AABB(Player.getComponent<ColliderComponent>(),
                       *collider_component);

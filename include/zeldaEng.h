@@ -31,7 +31,7 @@ public:
 
   static SDL_Renderer *renderer;
   static SDL_Event event;
-  static std::vector<ColliderComponent *> colliders;
+  static std::vector<std::unique_ptr<ColliderComponent>> colliders;
 
 private:
   int count;
