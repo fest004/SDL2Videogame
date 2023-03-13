@@ -21,7 +21,6 @@ std::vector<std::unique_ptr<ColliderComponent>> ZeldaEng::colliders;
 
 Manager manager;
 auto &Player(manager.addEntity());
-auto &wall(manager.addEntity());
 
 void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
                     int height, bool fullscreen) {
@@ -62,11 +61,6 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
       "../assets/spritesheets/zeldaleftTest.png");
   Player.addComponent<KeyboardController>();
   Player.addComponent<ColliderComponent>("player");
-
-  wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
-  wall.addComponent<SpriteComponent>(
-      "../assets/spritesheets/zeldaleftTest.png");
-  wall.addComponent<ColliderComponent>("wall");
 }
 
 void ZeldaEng::EventHandle() {
@@ -85,8 +79,33 @@ void ZeldaEng::Update() {
 
   for (auto &collider_component : colliders) {
     if (collider_component->tag != "player") {
-      Collision::AABB(Player.getComponent<ColliderComponent>(),
-                      *collider_component);
+      if (Collision::AABB(Player.getComponent<ColliderComponent>(),
+                          *collider_component)) {
+        SDL_Rect intersection;
+        int playerBottom = Player.getComponent<ColliderComponent>().collider.y +
+                           Player.getComponent<ColliderComponent>().collider.h;
+        int groundBottom =
+            collider_component->collider.y + collider_component->collider.h;
+        int overlapY = playerBottom - collider_component->collider.y;
+
+        if (overlapY < (groundBottom -
+                        Player.getComponent<ColliderComponent>().collider.y)) {
+          Player.getComponent<TransformComponent>().position.y -= overlapY;
+        } else {
+          int overlapX = (Player.getComponent<ColliderComponent>().collider.x -
+                          Player.getComponent<ColliderComponent>().collider.w) -
+                         collider_component->collider.x;
+
+          if (overlapX <
+              (Player.getComponent<ColliderComponent>().collider.x +
+               collider_component->collider.w) -
+                  Player.getComponent<ColliderComponent>().collider.x) {
+            Player.getComponent<TransformComponent>().position.x -= overlapX;
+          } else {
+            Player.getComponent<TransformComponent>().position.x += overlapX;
+          }
+        }
+      }
     }
   }
 
@@ -104,7 +123,6 @@ void ZeldaEng::Render() {
 
   manager.draw();
   Player.draw();
-  wall.draw();
   SDL_RenderPresent(renderer);
 }
 
