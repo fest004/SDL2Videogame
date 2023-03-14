@@ -1,6 +1,7 @@
 #include "../include/core.h"
 #include "Vector2D.cpp"
 #include "collision.cpp"
+#include "ecs.cpp"
 #include "gameObject.cpp"
 #include "textureManager.cpp"
 #include "tilemap.cpp"
@@ -21,6 +22,13 @@ std::vector<std::unique_ptr<ColliderComponent>> ZeldaEng::colliders;
 
 Manager manager;
 auto &Player(manager.addEntity());
+
+enum groupLabel : std::size_t {
+  groupMap,
+  groupPlayers,
+  groupEnemies,
+  groupColliders
+};
 
 void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
                     int height, bool fullscreen) {
@@ -61,6 +69,7 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
       "../assets/spritesheets/zeldaleftTest.png");
   Player.addComponent<KeyboardController>();
   Player.addComponent<ColliderComponent>("player");
+  Player.addGroup(groupPlayers);
 }
 
 void ZeldaEng::EventHandle() {
@@ -115,14 +124,25 @@ void ZeldaEng::Update() {
 
 void ZeldaEng::FixedUpdate() {}
 
+auto &tiles(manager.getGroup(groupMap));
+auto &players(manager.getGroup(groupPlayers));
+auto &enemies(manager.getGroup(groupEnemies));
+
 void ZeldaEng::Render() {
   SDL_RenderClear(renderer);
   // Add stuff to render
   textureManager::setBackground(
       "../assets/backgrounds/CityBackground/city 1/10.png");
 
-  manager.draw();
-  Player.draw();
+  for (auto &t : tiles) {
+    t->draw();
+  }
+  for (auto p : players) {
+    p->draw();
+  }
+  for (auto e : enemies) {
+    e->draw();
+  }
   SDL_RenderPresent(renderer);
 }
 
@@ -137,4 +157,5 @@ void ZeldaEng::Clean() {
 void ZeldaEng::AddTile(int ID, int x, int y) {
   auto &tile(manager.addEntity());
   tile.addComponent<TileComponent>(x, y, 32, 32, ID);
+  tile.addGroup(groupMap);
 }
