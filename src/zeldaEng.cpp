@@ -1,3 +1,4 @@
+#include "../include/box2d/box2d.h"
 #include "../include/core.h"
 #include "Vector2D.cpp"
 #include "collision.cpp"
@@ -5,6 +6,7 @@
 #include "gameObject.cpp"
 #include "textureManager.cpp"
 #include "tilemap.cpp"
+#include "world.cpp"
 #include <thread>
 
 tilemap *map;
@@ -58,6 +60,9 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   } else {
     isRunning = false;
   }
+
+  b2World boxworld({0.0f, 0.8f});
+
   map = new tilemap();
 
   tilemap::LoadTilemap("../assets/TestMap3232Nr2.txt", 32, 32);
@@ -69,7 +74,11 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
       "../assets/spritesheets/zeldaleftTest.png");
   Player.addComponent<KeyboardController>();
   Player.addComponent<ColliderComponent>("player");
+
+  // Player.addComponent<BoxCollider2DComponent>();
   Player.addGroup(groupPlayers);
+
+  // Player.addComponent<RigidBody2DComponent>(boxworld, true, 200, 200);
 }
 
 void ZeldaEng::EventHandle() {
@@ -117,9 +126,6 @@ void ZeldaEng::Update() {
       }
     }
   }
-
-  // Collision logic, to be moved
-  //
 }
 
 void ZeldaEng::FixedUpdate() {}
