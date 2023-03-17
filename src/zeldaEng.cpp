@@ -6,10 +6,11 @@
 #include "gameObject.cpp"
 #include "textureManager.cpp"
 #include "tilemap.cpp"
-#include "world.cpp"
 #include <thread>
 
 tilemap *map;
+
+b2World boxworld({0.0f, 9.8f});
 
 ZeldaEng::ZeldaEng(){};
 ZeldaEng::~ZeldaEng(){};
@@ -61,24 +62,19 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
     isRunning = false;
   }
 
-  b2World boxworld({0.0f, 0.8f});
+  // map = new tilemap();
+  //
+  // tilemap::LoadTilemap("../assets/TestMap3232Nr2.txt", 32, 32);
+  //
+  // delete map;
+  //
+  Player.addComponent<RigidBody2DComponent>(boxworld, true, 200, 200);
+  Player.addComponent<BoxCollider2DComponent>();
 
-  map = new tilemap();
-
-  tilemap::LoadTilemap("../assets/TestMap3232Nr2.txt", 32, 32);
-
-  delete map;
-
-  Player.addComponent<TransformComponent>(0, 200);
   Player.addComponent<SpriteComponent>(
       "../assets/spritesheets/zeldaleftTest.png");
-  Player.addComponent<KeyboardController>();
-  Player.addComponent<ColliderComponent>("player");
 
-  // Player.addComponent<BoxCollider2DComponent>();
   Player.addGroup(groupPlayers);
-
-  // Player.addComponent<RigidBody2DComponent>(boxworld, true, 200, 200);
 }
 
 void ZeldaEng::EventHandle() {
@@ -94,38 +90,45 @@ void ZeldaEng::EventHandle() {
 void ZeldaEng::Update() {
   manager.refresh();
   manager.update();
+  //
+  // for (auto &collider_component : colliders) {
+  //   if (collider_component->tag != "player") {
+  //     if (Collision::AABB(Player.getComponent<ColliderComponent>(),
+  //                         *collider_component)) {
+  //       SDL_Rect intersection;
+  //       int playerBottom =
+  //       Player.getComponent<ColliderComponent>().collider.y +
+  //                          Player.getComponent<ColliderComponent>().collider.h;
+  //       int groundBottom =
+  //           collider_component->collider.y + collider_component->collider.h;
+  //       int overlapY = playerBottom - collider_component->collider.y;
+  //
+  //       if (overlapY < (groundBottom -
+  //                       Player.getComponent<ColliderComponent>().collider.y))
+  //                       {
+  //         Player.getComponent<TransformComponent>().position.y -= overlapY;
+  //       } else {
+  //         int overlapX = (Player.getComponent<ColliderComponent>().collider.x
+  //         -
+  //                         Player.getComponent<ColliderComponent>().collider.w)
+  //                         -
+  //                        collider_component->collider.x;
+  //
+  //         if (overlapX <
+  //             (Player.getComponent<ColliderComponent>().collider.x +
+  //              collider_component->collider.w) -
+  //                 Player.getComponent<ColliderComponent>().collider.x) {
+  //           Player.getComponent<TransformComponent>().position.x -= overlapX;
+  //         } else {
+  //           Player.getComponent<TransformComponent>().position.x += overlapX;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
-  for (auto &collider_component : colliders) {
-    if (collider_component->tag != "player") {
-      if (Collision::AABB(Player.getComponent<ColliderComponent>(),
-                          *collider_component)) {
-        SDL_Rect intersection;
-        int playerBottom = Player.getComponent<ColliderComponent>().collider.y +
-                           Player.getComponent<ColliderComponent>().collider.h;
-        int groundBottom =
-            collider_component->collider.y + collider_component->collider.h;
-        int overlapY = playerBottom - collider_component->collider.y;
-
-        if (overlapY < (groundBottom -
-                        Player.getComponent<ColliderComponent>().collider.y)) {
-          Player.getComponent<TransformComponent>().position.y -= overlapY;
-        } else {
-          int overlapX = (Player.getComponent<ColliderComponent>().collider.x -
-                          Player.getComponent<ColliderComponent>().collider.w) -
-                         collider_component->collider.x;
-
-          if (overlapX <
-              (Player.getComponent<ColliderComponent>().collider.x +
-               collider_component->collider.w) -
-                  Player.getComponent<ColliderComponent>().collider.x) {
-            Player.getComponent<TransformComponent>().position.x -= overlapX;
-          } else {
-            Player.getComponent<TransformComponent>().position.x += overlapX;
-          }
-        }
-      }
-    }
-  }
+  glm::float32 timeStep = 1.0f / 60.0f; // time step of 1/60th of a second
+  boxworld.Step(timeStep, 6, 2);
 }
 
 void ZeldaEng::FixedUpdate() {}

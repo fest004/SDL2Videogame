@@ -5,6 +5,7 @@ project(ZeldaGame)
 
 # Set C++ standard to 11
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_BUILD_TYPE Debug)
 
 # Add your source files here
 set(SOURCES

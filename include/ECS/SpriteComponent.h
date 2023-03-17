@@ -2,13 +2,14 @@
 #define SPRITE_COMPONENT_H
 
 #include "../textureManager.h"
-#include "TransformComponent.h"
+#include "BoxCollider2DComponent.h"
+#include "Rigidbody2DComponent.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
 
 class SpriteComponent : public Component {
 public:
-  SpriteComponent() = default;
+  // SpriteComponent() = default;
 
   SpriteComponent(const char *path) {
     texture = textureManager::loadTexture(path);
@@ -21,19 +22,19 @@ public:
   }
 
   void init() override {
-    transform = &entity->getComponent<TransformComponent>();
+    rigidbody = &entity->getComponent<RigidBody2DComponent>();
 
     sourceRectangle.x = 0;
     sourceRectangle.y = 0;
-    sourceRectangle.w = transform->width;
-    sourceRectangle.h = transform->height;
+    sourceRectangle.w = boxcollider->GetWidth();
+    sourceRectangle.h = boxcollider->GetHeight();
   }
 
   void update() override {
-    destinationRect.x = static_cast<int>(transform->position.x);
-    destinationRect.y = static_cast<int>(transform->position.y);
-    destinationRect.w = transform->width * transform->scale;
-    destinationRect.h = transform->height * transform->scale;
+    destinationRect.x = static_cast<int>(rigidbody->GetX());
+    destinationRect.y = static_cast<int>(rigidbody->GetY());
+    destinationRect.w = boxcollider->GetWidth() * boxcollider->GetScale();
+    destinationRect.h = boxcollider->GetHeight() * boxcollider->GetScale();
   }
 
   void draw() override {
@@ -41,7 +42,8 @@ public:
   }
 
 private:
-  TransformComponent *transform;
+  RigidBody2DComponent *rigidbody;
+  BoxCollider2DComponent *boxcollider;
   SDL_Texture *texture;
   SDL_Rect sourceRectangle, destinationRect;
 };
