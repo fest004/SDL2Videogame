@@ -1,7 +1,9 @@
 #ifndef TILE_COMPONENT_H
 #define TILE_COMPONENT_H
 
-#include "ColliderComponent.h"
+#include "../globals.h"
+#include "BoxCollider2DComponent.h"
+#include "Rigidbody2DComponent.h"
 #include "SpriteComponent.h"
 #include "TransformComponent.h"
 #include "ecs.h"
@@ -9,9 +11,9 @@
 
 class TileComponent : public Component {
 public:
-  TransformComponent *transform;
+  RigidBody2DComponent *rigidbody;
   SpriteComponent *sprite;
-  ColliderComponent *colliderComponent;
+  BoxCollider2DComponent *colliderComponent;
   std::string tempTag;
 
   bool isCollider = false;
@@ -63,17 +65,19 @@ public:
   }
 
   void init() override {
-    entity->addComponent<TransformComponent>(
-        (float)tileRectangle.x, (float)tileRectangle.y, (float)tileRectangle.w,
-        (float)tileRectangle.h, 1);
-    transform = &entity->getComponent<TransformComponent>();
+    entity->addComponent<RigidBody2DComponent>(false, tileRectangle.x,
+                                               tileRectangle.y);
+    rigidbody = &entity->getComponent<RigidBody2DComponent>();
+    int x = rigidbody->GetX();
+    int y = rigidbody->GetY();
+    // std::cout << "(" << x << ", " << y << ")" << std::endl;
 
     entity->addComponent<SpriteComponent>(path);
     sprite = &entity->getComponent<SpriteComponent>();
 
     if (isCollider) {
-      entity->addComponent<ColliderComponent>(tempTag);
-      colliderComponent = &entity->getComponent<ColliderComponent>();
+      entity->addComponent<BoxCollider2DComponent>(tempTag);
+      // colliderComponent = &entity->getComponent<BoxCollider2DComponent>();
     }
   }
 };

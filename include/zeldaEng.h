@@ -33,12 +33,14 @@ public:
   static SDL_Event event;
   static std::vector<std::unique_ptr<ColliderComponent>> colliders;
 
+  Log LogManager;
+
 private:
   int count;
   bool isRunning;
   SDL_Window *window;
 
-  Log LogManager;
+  // Log LogManager;
 };
 
 #endif

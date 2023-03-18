@@ -1,5 +1,6 @@
 #include "../include/box2d/box2d.h"
 #include "../include/core.h"
+#include "../include/globals.h"
 #include "Vector2D.cpp"
 #include "collision.cpp"
 #include "ecs.cpp"
@@ -62,14 +63,14 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
     isRunning = false;
   }
 
-  // map = new tilemap();
-  //
-  // tilemap::LoadTilemap("../assets/TestMap3232Nr2.txt", 32, 32);
-  //
-  // delete map;
-  //
-  Player.addComponent<RigidBody2DComponent>(boxworld, true, 200, 200);
-  Player.addComponent<BoxCollider2DComponent>();
+  map = new tilemap();
+
+  tilemap::LoadTilemap("../assets/TestMap3232Nr2.txt", 32, 32);
+
+  delete map;
+
+  Player.addComponent<RigidBody2DComponent>(true, 200, 200);
+  Player.addComponent<BoxCollider2DComponent>("player");
 
   Player.addComponent<SpriteComponent>(
       "../assets/spritesheets/zeldaleftTest.png");
@@ -145,13 +146,20 @@ void ZeldaEng::Render() {
 
   for (auto &t : tiles) {
     t->draw();
+
+    if (t->hasComponent<BoxCollider2DComponent>()) {
+      t->getComponent<BoxCollider2DComponent>().DrawOutline(renderer);
+    }
   }
   for (auto p : players) {
     p->draw();
+
+    p->getComponent<BoxCollider2DComponent>().DrawOutline(renderer);
   }
   for (auto e : enemies) {
     e->draw();
   }
+
   SDL_RenderPresent(renderer);
 }
 

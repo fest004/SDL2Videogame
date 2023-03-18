@@ -2,8 +2,10 @@
 #define BOX_COLLIDER_2D_COMPONENT_H
 
 #include "../box2d/box2d.h"
+#include "../globals.h"
 #include "Rigidbody2DComponent.h"
 #include "ecs.h"
+#include <SDL2/SDL.h>
 #include <glm/glm.hpp>
 #include <iostream>
 
@@ -15,7 +17,7 @@ public:
   // // storage for runtime
   // void *RuntimeFixture = nullptr;
   //
-  BoxCollider2DComponent() = default;
+  BoxCollider2DComponent(std::string t) { tag = t; }
   ~BoxCollider2DComponent() = default;
 
   void init() override {
@@ -25,18 +27,16 @@ public:
     //
     scale = 1;
 
-    std::cout << "Program made it here bitches" << std::endl;
-
     rigidbody = entity->getComponent<RigidBody2DComponent>();
 
     m_body = rigidbody.GetBody();
 
-    std::cout << rigidbody.GetX() << std::endl;
-    std::cout << rigidbody.GetY() << std::endl;
-    std::cout << std::endl;
-    m_shape.SetAsBox(32, 32);
+    // std::cout << rigidbody.GetX() << std::endl;
+    // std::cout << rigidbody.GetY() << std::endl;
+    // std::cout << std::endl;
+    m_shape.SetAsBox(16, 16);
     m_fixtureDef.shape = &m_shape;
-    m_fixtureDef.density = 1.0f;
+    m_fixtureDef.density = 10.0f;
     m_fixtureDef.friction = 0.5f;
     m_fixtureDef.restitution = 0.0f;
   }
@@ -50,24 +50,58 @@ public:
   void update() override {
     // std::cout << rigidbody.GetX() << std::endl;
     // std::cout << rigidbody.GetY() << std::endl;
-    // m_body->SetTransform(b2Vec2(rigidbody.GetX(), rigidbody.GetY()), 0.0f);
+    m_body->SetTransform(b2Vec2(rigidbody.GetX(), rigidbody.GetY()), 0.0f);
   }
 
-  // float GetWidth() {
-  //         b2PolygonShape* shape =
-  //         static_cast<b2PolygonShape*>(fixture->GetShape()); b2Vec2 size =
-  //         shape->GetVertex(2) - shape->GetVertex(0); return size.x;
-  //     }
-  //
+  SDL_Point GetSize(b2Vec2 *vertices, int32 count) {
+    // Find the minimum and maximum x and y values of the vertices
+    float minX = vertices[0].x;
+    float maxX = vertices[0].x;
+    float minY = vertices[0].y;
+    float maxY = vertices[0].y;
+    for (int32 i = 1; i < count; i++) {
+      if (vertices[i].x < minX)
+        minX = vertices[i].x;
+      if (vertices[i].x > maxX)
+        maxX = vertices[i].x;
+      if (vertices[i].y < minY)
+        minY = vertices[i].y;
+      if (vertices[i].y > maxY)
+        maxY = vertices[i].y;
+    }
 
-  int GetWidth() {
-    // int width = abs(m_shape.m_vertices[2].x) - abs(m_shape.m_vertices[0].x);
-    return 32;
+    // Calculate the width and height of the bounding box
+    int width = (int)((maxX - minX) * 30.0f);
+    int height = (int)((maxY - minY) * 30.0f);
+
+    // Return the size as a SDL_Point object
+    return SDL_Point{width, height};
   }
 
-  int GetHeight() {
-    // int height = abs(m_shape.m_vertices[2].y) - abs(m_shape.m_vertices[0].y);
-    return 32;
+  int GetWidth() { return 32; }
+  int GetHeight() { return 32; }
+
+  void DrawOutline(SDL_Renderer *renderer) {
+    // Get the Box2D polygon shape attached to the body
+    b2Fixture *fixture = m_body->GetFixtureList();
+    b2Shape *shape = fixture->GetShape();
+    b2PolygonShape *polygonShape = dynamic_cast<b2PolygonShape *>(shape);
+
+    // Get the position of the body that the polygon shape is attached to
+    b2Vec2 position = m_body->GetPosition();
+
+    // Get the size of the polygon shape in pixels
+    SDL_Point size = GetSize(polygonShape->m_vertices, polygonShape->m_count);
+
+    // Define the SDL_Rect object that represents the rectangle to draw
+    SDL_Rect rect = {(int)position.x - size.x / 2, (int)position.y - size.y / 2,
+                     size.x, size.y};
+
+    // Set the drawing color to red
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
+    // Draw the rectangle on the screen
+    SDL_RenderDrawRect(renderer, &rect);
   }
 
   int GetScale() {
@@ -84,6 +118,7 @@ private:
   b2FixtureDef m_fixtureDef;
   int scale;
   RigidBody2DComponent rigidbody;
+  std::string tag;
 };
 
 #endif
