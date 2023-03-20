@@ -31,14 +31,12 @@ public:
 
     m_body = rigidbody.GetBody();
 
-    // std::cout << rigidbody.GetX() << std::endl;
-    // std::cout << rigidbody.GetY() << std::endl;
-    // std::cout << std::endl;
     m_shape.SetAsBox(16, 16);
     m_fixtureDef.shape = &m_shape;
-    m_fixtureDef.density = 10.0f;
+    m_fixtureDef.density = 1.0f;
     m_fixtureDef.friction = 0.5f;
     m_fixtureDef.restitution = 0.0f;
+    m_body->CreateFixture(&m_fixtureDef);
   }
   BoxCollider2DComponent(const BoxCollider2DComponent &) = default;
 

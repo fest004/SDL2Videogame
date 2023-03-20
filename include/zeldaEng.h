@@ -1,3 +1,4 @@
+#include "MyContactListener.h"
 #include "log.h"
 #include "timestep.h"
 #include <SDL2/SDL.h>
@@ -39,6 +40,7 @@ private:
   int count;
   bool isRunning;
   SDL_Window *window;
+  MyContactListener contactListener;
 
   // Log LogManager;
 };
