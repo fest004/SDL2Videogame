@@ -3,8 +3,8 @@
 #include <iostream>
 
 void initBox() {
-  MyContactListener contactListener;
+  contactListener = new MyContactListener();
   boxworld.SetAllowSleeping(false);
-  boxworld.SetContactListener(&contactListener);
+  boxworld.SetContactListener(contactListener);
   std::cout << "ContactListener Set" << std::endl;
 }

@@ -23,7 +23,11 @@ SDL_Event ZeldaEng::event;
 
 SDL_Renderer *ZeldaEng::renderer = nullptr;
 
+MyContactListener *contactListener;
+
 std::vector<std::unique_ptr<ColliderComponent>> ZeldaEng::colliders;
+
+glm::float32 timeStep = 1.0f / 120.0f;
 
 Manager manager;
 auto &Player(manager.addEntity());
@@ -65,8 +69,8 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
   }
 
   initBox();
-  contactListener = *new MyContactListener();
-  boxworld.SetContactListener(&contactListener);
+  // contactListener = *new MyContactListener();
+  // boxworld.SetContactListener(&contactListener);
 
   map = new tilemap();
 
@@ -74,8 +78,11 @@ void ZeldaEng::Init(const char *title, int xpos, int ypos, int width,
 
   delete map;
 
+  ZeldaDebug("Reached here");
+
   Player.addComponent<RigidBody2DComponent>(true, 200, 200);
   Player.addComponent<BoxCollider2DComponent>("player");
+  // Player.addComponent<ColliderComponent>();
 
   Player.addComponent<SpriteComponent>(
       "../assets/spritesheets/zeldaleftTest.png");
@@ -94,11 +101,9 @@ void ZeldaEng::EventHandle() {
 }
 
 void ZeldaEng::Update() {
+  boxworld.Step(timeStep, 6, 2);
   manager.refresh();
   manager.update();
-
-  glm::float32 timeStep = 1.0f / 60.0f; // time step of 1/60th of a second
-  boxworld.Step(timeStep, 6, 2);
 }
 
 void ZeldaEng::FixedUpdate() {}

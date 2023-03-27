@@ -68,17 +68,19 @@ public:
     entity->addComponent<RigidBody2DComponent>(false, tileRectangle.x,
                                                tileRectangle.y);
     rigidbody = &entity->getComponent<RigidBody2DComponent>();
+
+    if (isCollider) {
+      entity->addComponent<BoxCollider2DComponent>(tempTag);
+      // entity->addComponent<ColliderComponent>(tempTag);
+      // colliderComponent = &entity->getComponent<BoxCollider2DComponent>();
+    }
+
     int x = rigidbody->GetX();
     int y = rigidbody->GetY();
     // std::cout << "(" << x << ", " << y << ")" << std::endl;
 
     entity->addComponent<SpriteComponent>(path);
     sprite = &entity->getComponent<SpriteComponent>();
-
-    if (isCollider) {
-      entity->addComponent<BoxCollider2DComponent>(tempTag);
-      // colliderComponent = &entity->getComponent<BoxCollider2DComponent>();
-    }
   }
 };
 

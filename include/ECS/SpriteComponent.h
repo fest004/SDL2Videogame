@@ -23,6 +23,7 @@ public:
 
   void init() override {
     rigidbody = &entity->getComponent<RigidBody2DComponent>();
+    boxcollider = &entity->getComponent<BoxCollider2DComponent>();
 
     sourceRectangle.x = 0;
     sourceRectangle.y = 0;

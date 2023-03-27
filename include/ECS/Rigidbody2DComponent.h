@@ -1,4 +1,3 @@
-
 #ifndef RIGIDBODY_2D_COMPONENT_H
 #define RIGIDBODY_2D_COMPONENT_H
 
@@ -12,10 +11,11 @@ class RigidBody2DComponent : public Component {
 public:
   RigidBody2DComponent() = default;
 
-  RigidBody2DComponent(bool isDynamic, int x, int y) {
+  RigidBody2DComponent(const bool &isDynamic, int x, int y)
+      : body(nullptr), vector(0.0f, 0.0f) {
     b2BodyDef bodyDef;
     bodyDef.type = isDynamic ? b2_dynamicBody : b2_staticBody;
-    bodyDef.position.Set((float)x, (float)y);
+    bodyDef.position.Set(static_cast<float>(x), static_cast<float>(y));
     body = boxworld.CreateBody(&bodyDef);
 
     b2PolygonShape shape;
@@ -30,21 +30,26 @@ public:
     vector = body->GetPosition();
   }
 
-  void SetTransform(b2Vec2 vec, float ang) { body->SetTransform(vec, ang); }
+  void SetTransform(const b2Vec2 &vec, const float &ang) {
+    body->SetTransform(vec, ang);
+  }
 
-  int GetX() {
+  int GetX() const {
     b2Vec2 pos = body->GetPosition();
     return pos.x;
   }
 
-  int GetY() {
+  int GetY() const {
     b2Vec2 pos = body->GetPosition();
     return pos.y;
   }
 
-  b2Body *GetBody() { return body; }
+  b2Body *GetBody() const { return body; }
 
-  void update() override { b2Vec2 pos = body->GetPosition(); }
+  void update() override {
+    b2Vec2 pos = body->GetPosition();
+    vector = b2Vec2(pos.x * 30.0f, pos.y * 30.0f);
+  }
 
 private:
   b2Body *body;
